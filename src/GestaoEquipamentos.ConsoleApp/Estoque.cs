@@ -1,4 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Security.Cryptography.X509Certificates; // Não sei pq o systema usou isso... Me explica depois por favor.
 
 namespace GestaoEquipamentos.ConsoleApp
 {
@@ -11,12 +11,22 @@ namespace GestaoEquipamentos.ConsoleApp
 
         public void Create()
         {
-            Produto novoProduto = new Produto(Program.ObterValor<string>("Serie: "),
-                                              idProduto,
-                                              Program.ObterValor<string>("Nome: "),
-                                              Program.ObterValor<string>("Data de fabricação: "),
-                                              Program.ObterValor<string>("Fabricante: "),
-                                              Program.ObterValor<double>("Preço: "));
+            //Produto novoProduto = new Produto(Program.ObterValor<string>("Serie: "),
+            //                                  idProduto,
+            //                                  Program.ObterValor<string>("Nome: "),
+            //                                  Program.ObterValor<string>("Data de fabricação: "),
+            //                                  Program.ObterValor<string>("Fabricante: "),
+            //                                  Program.ObterValor<double>("Preço: "));
+
+            Console.WriteLine("Por favor, forneça as informações do novo produto:");
+            string numeroSerie = Program.ObterValor<string>("Número de Série: ");
+            string nome = Program.ObterValor<string>("Nome: ");
+            string dataFabricacao = Program.ObterValor<string>("Data de fabricação (DD/MM/AAAA): ");
+            string fabricante = Program.ObterValor<string>("Fabricante: ");
+            double preco = Program.ObterValor<double>("Preço: ");
+
+            Produto novoProduto = new Produto(numeroSerie, idProduto, nome, dataFabricacao, fabricante, preco);
+
 
             AdicionarProduto(novoProduto);
 
@@ -25,6 +35,7 @@ namespace GestaoEquipamentos.ConsoleApp
 
         }
 
+        #region Métodos do Create
         private void AdicionarProduto(Produto novoProduto)
         {
 
@@ -47,11 +58,11 @@ namespace GestaoEquipamentos.ConsoleApp
             #endregion
         }
 
-
+        #endregion
 
         public void Read()
         {
-            Cabecalho();
+            Menu.Cabecalho();
 
             foreach (var produto in estoque)
             {
@@ -60,24 +71,12 @@ namespace GestaoEquipamentos.ConsoleApp
                                   $"|Nome: {produto.nome}".PadRight(23) +
                                   $"|Data: {produto.dataDeFabricacao}".PadRight(26) +
                                   $"|Fab: {produto.fabricante}".PadRight(19) +
-                                  $"|Valor R$ {produto.preco}".PadRight(21) + " |");
+                                  $"|Valor R$ {produto.preco:F}".PadRight(21) + " |");
             }
 
-            Rodape();
-        }
-        #region Geradores de Tabela
-        private static void Rodape()
-        {
-            Console.WriteLine("+------+------------------+----------------------+-------------------------+------------------+---------------------+");
+            Menu.Rodape();
         }
 
-        private static void Cabecalho()
-        {
-            Console.WriteLine("+------+------------------+----------------------+-------------------------+------------------+---------------------+");
-            Console.WriteLine("|  ID  |      Série       |    Nome do Produto   |   Data de Fabricação    |    Fabricante    |  Preço do Produto   |");
-            Console.WriteLine("+------+------------------+----------------------+-------------------------+------------------+---------------------+");
-        }
-        #endregion
         public void Update()
         {
             Read();
@@ -103,7 +102,9 @@ namespace GestaoEquipamentos.ConsoleApp
             }
 
         }
+
         #region Metodos do Update
+
         private void EditarPreco(Produto produtoEditado)
         {
             double novoPreco = Program.ObterValor<double>("Preco:");
@@ -144,6 +145,7 @@ namespace GestaoEquipamentos.ConsoleApp
                 produtoEditado.numeroDeSerie = novoNumeroDeSerie;
         }
         #endregion
+
         public void Delete()
         {
             Read();
