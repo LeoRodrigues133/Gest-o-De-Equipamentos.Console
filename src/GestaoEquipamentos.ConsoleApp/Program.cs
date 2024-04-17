@@ -19,20 +19,27 @@
                 {
 
                     case 1:
+                        Console.Clear();
                         Console.WriteLine("Adicione um produto.");
                         estoque.Create();
                         break;
                     case 2:
+                        Console.Clear();
                         Console.WriteLine("Ver lista de produtos.");
                         estoque.Read();
                         break;
                     case 3:
-                        Console.WriteLine("3 - Adicionar um produto.");
+                        Console.Clear();
+                        Console.WriteLine("Editar um produto.");
+                        estoque.Update();
                         break;
                     case 4:
-                        Console.WriteLine("4 - Adicionar um produto.");
+                        Console.Clear();
+                        Console.WriteLine("Deletar um produto.");
+                        estoque.Delete();
                         break;
                     default:
+                        Console.Clear();
                         Console.WriteLine("Selecione uma opção.");
                         break;
                 }
