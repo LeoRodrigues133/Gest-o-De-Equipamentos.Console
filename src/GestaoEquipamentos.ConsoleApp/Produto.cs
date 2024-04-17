@@ -1,10 +1,7 @@
 ﻿namespace GestaoEquipamentos.ConsoleApp
 {
-    internal partial class Program
-    {
     public class Produto
     {
-            public int ID;
         public string nome, numeroDeSerie, fabricante;
         public string dataDeFabricacao;
         public double preco;

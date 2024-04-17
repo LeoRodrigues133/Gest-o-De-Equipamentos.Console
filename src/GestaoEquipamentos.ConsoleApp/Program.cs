@@ -13,7 +13,11 @@
 
             while (true)
             {
-                int opcao = ObterValor<int>("Selecione uma opção do menu: \n1 - Adicionar um produto.\n2 - Ver lista de produtos.\n3 - Editar um produto.\n4 - Deletar um produto.");
+                int opcao = ObterValor<int>("Selecione uma opção do menu: \n" +
+                                            "1 - Adicionar um produto.\n" +
+                                            "2 - Ver lista de produtos.\n" +
+                                            "3 - Editar um produto.\n" +
+                                            "4 - Deletar um produto.");
 
                 switch (opcao)
                 {

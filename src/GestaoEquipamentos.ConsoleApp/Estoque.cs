@@ -2,8 +2,6 @@
 
 namespace GestaoEquipamentos.ConsoleApp
 {
-    internal partial class Program
-    {
     public class Estoque
     {
         public List<Produto> estoque = new List<Produto>();
@@ -67,6 +65,7 @@ namespace GestaoEquipamentos.ConsoleApp
 
             Rodape();
         }
+
         #region Geradores de Tabela
         private static void Rodape()
         {
@@ -79,7 +78,9 @@ namespace GestaoEquipamentos.ConsoleApp
             Console.WriteLine("|  ID  |      Série       |    Nome do Produto   |   Data de Fabricação    |    Fabricante    |  Preço do Produto   |");
             Console.WriteLine("+------+------------------+----------------------+-------------------------+------------------+---------------------+");
         }
+
         #endregion
+
         public void Update()
         {
             Read();
@@ -105,6 +106,7 @@ namespace GestaoEquipamentos.ConsoleApp
             }
 
         }
+
         #region Metodos do Update
         private void EditarPreco(Produto produtoEditado)
         {
@@ -145,7 +147,9 @@ namespace GestaoEquipamentos.ConsoleApp
             if (novoNumeroDeSerie != null && novoNumeroDeSerie != "")
                 produtoEditado.numeroDeSerie = novoNumeroDeSerie;
         }
+
         #endregion
+
         public void Delete()
         {
             Read();
