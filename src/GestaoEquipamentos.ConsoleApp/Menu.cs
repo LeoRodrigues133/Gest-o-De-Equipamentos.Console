@@ -4,10 +4,10 @@ namespace GestaoEquipamentos.ConsoleApp
 {
     public class Menu
     {
-        public Estoque estoque;
-        public Produto produtoEditado;
+        public RepositórioEquipamentos estoque;
+        public Equipamentos produtoEditado;
 
-        public Menu(Estoque estoque)
+        public Menu(RepositórioEquipamentos estoque)
         {
             this.estoque = estoque;
         }
@@ -66,14 +66,49 @@ namespace GestaoEquipamentos.ConsoleApp
             }
         }
 
+        public static int ExibirMenuEdicao()
+        {
+            int opcao = Program.ObterValor<int>("Digite qual campo deseja atualizar: \n" +
+                                "1 - Serial\n" +
+                                "2 - Nome\n" +
+                                "3 - Data de fabricação\n" +
+                                "4 - Fabricante\n" +
+                                "5 - Preço\n");
 
+            return opcao;
+        }
+
+        public static void ModificarCor(string cor, string resposta)
+        {
+            switch (cor)
+            {
+                case "Erro":
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case "Sucesso":
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case "Aviso":
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case "":
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+                case "x":
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    break;
+            }
+            Console.Write(resposta);
+            Console.ResetColor();
+        }
+
+        #region Construtores de String/Tables
         public static void Rodape()
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
 
             Console.WriteLine("+------+------------------+----------------------+-------------------------+------------------+---------------------+");
         }
-
 
         public static void Cabecalho(string tipo)
         {
@@ -102,35 +137,7 @@ namespace GestaoEquipamentos.ConsoleApp
             }
         }
 
+        #endregion
 
-        public void ExibirMenuEdicao(Produto produtoEditado)
-        {
-            
-        }
-
-
-        public static void ModificarCor(string cor, string resposta)
-        {
-            switch (cor)
-            {
-                case "Erro":
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    break;
-                case "Sucesso":
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    break;
-                case "Aviso":
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    break;
-                case "":
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
-                case "x":
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    break;
-            }
-            Console.Write(resposta);
-            Console.ResetColor();
-        }
     }
 }

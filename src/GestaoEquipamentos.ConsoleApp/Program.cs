@@ -8,7 +8,7 @@ namespace GestaoEquipamentos.ConsoleApp
         static void Main(string[] args)
         {
             Console.WriteLine("Gerenciamento de Equipamentos | Academia de Programação 2024!\n");
-            Estoque estoque = new Estoque();
+            RepositórioEquipamentos estoque = new RepositórioEquipamentos();
             Menu menu = new Menu(estoque);
             menu.ExibirMenu();
 
