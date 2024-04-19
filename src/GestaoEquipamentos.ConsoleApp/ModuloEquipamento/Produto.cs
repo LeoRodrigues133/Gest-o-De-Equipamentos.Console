@@ -1,13 +1,15 @@
-﻿namespace GestaoEquipamentos.ConsoleApp
+﻿namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
 {
     public class Produto
     {
         public string nome, numeroDeSerie, fabricante;
-        public string dataDeFabricacao;
+        public DateTime dataDeFabricacao;
         public double preco;
         public int ID = novoID; // Já inicia em 1;
         private static int novoID;
-        public Produto(string numeroDeSerie, int ID, string nome, string dataDeFabricacao, string fabricante, double preco)
+        internal static int produtoEditado;
+
+        public Produto(string numeroDeSerie, int ID, string nome, DateTime dataDeFabricacao, string fabricante, double preco)
         {
             this.numeroDeSerie = numeroDeSerie;
             this.ID = GerarIdDoProduto();

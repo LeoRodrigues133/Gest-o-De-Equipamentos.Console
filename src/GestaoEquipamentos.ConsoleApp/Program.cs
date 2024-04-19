@@ -1,15 +1,17 @@
-﻿namespace GestaoEquipamentos.ConsoleApp
+﻿using GestaoEquipamentos.ConsoleApp.ModuloEquipamento;
+
+namespace GestaoEquipamentos.ConsoleApp
 {
     internal partial class Program
     {
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Gerenciamento de Equipamentos, Academia de Programação!\n");
-
+            Console.WriteLine("Gerenciamento de Equipamentos | Academia de Programação 2024!\n");
             Estoque estoque = new Estoque();
             Menu menu = new Menu(estoque);
             menu.ExibirMenu();
+
         }
 
         #region Métodos da Main
