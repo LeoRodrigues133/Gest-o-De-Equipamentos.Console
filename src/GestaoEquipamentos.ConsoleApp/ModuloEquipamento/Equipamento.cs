@@ -1,6 +1,6 @@
 ﻿namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
 {
-    public class Equipamentos
+    public class Equipamento
     {
         public string nome, numeroDeSerie, fabricante;
         public DateTime dataDeFabricacao;
@@ -9,7 +9,7 @@
         private static int novoID;
         internal static int produtoEditado;
 
-        public Equipamentos(string numeroDeSerie, int ID, string nome, DateTime dataDeFabricacao, string fabricante, double preco)
+        public Equipamento(string numeroDeSerie, int ID, string nome, DateTime dataDeFabricacao, string fabricante, double preco)
         {
             this.numeroDeSerie = numeroDeSerie;
             this.ID = GerarIdDoProduto();

@@ -1,4 +1,5 @@
-﻿using GestaoEquipamentos.ConsoleApp.ModuloEquipamento;
+﻿using GestaoEquipamentos.ConsoleApp.ModuloChamado;
+using GestaoEquipamentos.ConsoleApp.ModuloEquipamento;
 
 namespace GestaoEquipamentos.ConsoleApp
 {
@@ -7,11 +8,14 @@ namespace GestaoEquipamentos.ConsoleApp
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Gerenciamento de Equipamentos | Academia de Programação 2024!\n");
-            RepositórioEquipamentos estoque = new RepositórioEquipamentos();
-            Menu menu = new Menu(estoque);
-            menu.ExibirMenu();
+            //Console.WriteLine("Gerenciamento de Equipamentos | Academia de Programação 2024!\n");
 
+
+            RepositórioEquipamentos estoque = new RepositórioEquipamentos();
+            RepositorioChamados suporte = new RepositorioChamados();
+            Menu menu = new Menu(estoque, suporte);
+
+            menu.ExibirMenu();
         }
 
         #region Métodos da Main

@@ -1,26 +1,27 @@
-﻿//namespace GestaoEquipamentos.ConsoleApp.ModuloChamados
-//{
-//    public class Chamado
-//    {
-//        public string nome, descricao, dataDoChamado;
-//        public double valorChamado;
-//        public int idChamado = novoIDChamados;
-//        public static int novoIDChamados;
+﻿namespace GestaoEquipamentos.ConsoleApp.ModuloChamado
+{
+    public class Chamado
+    {
+        public string nome, descricao;
+        public DateTime prazoDoChamado;
+        public double valorChamado;
+        public int idChamado = novoIDChamados;
+        public static int novoIDChamados;
 
 
-//        public Chamado(int idChamados, string nome, string descricao, string dataDoChamado, double valorChamado)
-//        {
-//            this.idChamado = GerarIdChamados();
-//            this.nome = nome;
-//            this.descricao = descricao;
-//            this.dataDoChamado = dataDoChamado;
-//            this.valorChamado = valorChamado;
-//        }
+        public Chamado(int idChamado, string nome, string descricao, DateTime dataDoChamado, double valorChamado)
+        {
+            this.idChamado = GerarIdChamados();
+            this.nome = nome;
+            this.descricao = descricao;
+            this.prazoDoChamado = dataDoChamado;
+            this.valorChamado = valorChamado;
+        }
 
-//        public static int GerarIdChamados()
-//        {
+        public static int GerarIdChamados()
+        {
 
-//            return novoIDChamados++;
-//        }
-//    }
-//}
+            return novoIDChamados++;
+        }
+    }
+}

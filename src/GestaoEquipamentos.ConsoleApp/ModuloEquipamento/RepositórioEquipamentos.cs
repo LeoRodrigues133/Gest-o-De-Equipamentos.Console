@@ -4,8 +4,8 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
 {
     public class RepositórioEquipamentos
     {
-        public List<Equipamentos> estoque = new List<Equipamentos>();
-        public int idProduto = Equipamentos.GerarIdDoProduto();
+        public List<Equipamento> estoque = new List<Equipamento>();
+        public int idProduto = Equipamento.GerarIdDoProduto();
         public Menu menu;
 
 
@@ -36,7 +36,7 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
             string fabricante = Program.ObterValor<string>("Fabricante: ");
             double preco = Program.ObterValor<double>("Preço: ");
 
-            Equipamentos novoProduto = new Equipamentos(numeroSerie, idProduto, nome, dataFabricacao, fabricante, preco);
+            Equipamento novoProduto = new Equipamento(numeroSerie, idProduto, nome, dataFabricacao, fabricante, preco);
 
             AdicionarProduto(novoProduto);
 
@@ -45,7 +45,7 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
         }
 
         #region Métodos do Create
-        public void AdicionarProduto(Equipamentos novoProduto)
+        public void AdicionarProduto(Equipamento novoProduto)
         {
 
             estoque.Add(novoProduto);
@@ -79,24 +79,28 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
                 {
                     Console.WriteLine($"|Id: {produto.ID}".PadRight(7) +
                                       $"|Serie: {produto.numeroDeSerie}".PadRight(19) +
-                                      $"|Nome: {produto.nome}".PadRight(23) +
-                                      $"|Data: {produto.dataDeFabricacao.ToShortDateString()}".PadRight(26) +
-                                      $"|Fab: {produto.fabricante}".PadRight(19) +
-                                      $"|Valor R$ {produto.preco:F}".PadRight(21) + " |");
+                                      $"| {produto.nome}".PadRight(23) +
+                                      $"| {produto.dataDeFabricacao.ToShortDateString()}".PadRight(26) +
+                                      $"| {produto.fabricante}".PadRight(19) +
+                                      $"|R$ {produto.preco:F}".PadRight(21) + " |");
                 }
             }
 
-            Menu.Rodape();
+            Menu.Rodape("Equipamento");
+            Console.WriteLine("Pressione para continuar...");
+            Console.ReadKey();
+
         }
+
         #region Metodos do Read
         private bool VerificarEstoque()
         {
-            int contagem = estoque.Count<Equipamentos>();
+            int contagem = estoque.Count<Equipamento>();
 
             if (contagem > 0)
                 return false;
 
-            Menu.ModificarCor("Erro", "\t\t\t\t\t\tO estoque está vazio!\n");
+            Menu.ModificarCor("Erro", "\t\t\t\t\t\t[Não há Produtos!]\n");
             return true;
         }
         #endregion
@@ -107,9 +111,9 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
 
             Read();
 
-            int idSelecao = Program.ObterValor<int>("Digite o ID do produto desejado: ");
+            int idSelecao = Program.ObterValor<int>("Digite o ID para atualizar o Produto: ");
 
-            Equipamentos produtoEditado = estoque.FirstOrDefault(idDoProduto => idDoProduto.ID == idSelecao)!;
+            Equipamento produtoEditado = estoque.FirstOrDefault(idDoProduto => idDoProduto.ID == idSelecao)!;
 
             if (produtoEditado != null)
             {
@@ -125,9 +129,9 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
         }
 
         #region Metodos do Update
-        private void SelecionarCampoDeEdicao(Equipamentos produtoEditado)
+        private void SelecionarCampoDeEdicao(Equipamento produtoEditado)
         {
-            int opcao = Menu.ExibirMenuEdicao();
+            int opcao = Menu.ExibirMenuEdicao("Equipamento");
 
             switch (opcao)
             {
@@ -160,10 +164,13 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
 
                     EditarPreco(produtoEditado, novoPreco);
                     break;
+                case 0:
+                    Menu.ModificarCor("Aviso", "Nenhuma alteração foi feita!");
+                    break;
             }
         }
 
-        private bool EditarPreco(Equipamentos produtoEditado, double novoPreco)
+        private bool EditarPreco(Equipamento produtoEditado, double novoPreco)
         {
             if (novoPreco == null || novoPreco == 0)
                 return false;
@@ -173,7 +180,7 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
             return true;
         }
 
-        private bool EditarFabricante(Equipamentos produtoEditado, string novoFabricante)
+        private bool EditarFabricante(Equipamento produtoEditado, string novoFabricante)
         {
             if (novoFabricante == null || novoFabricante == "")
                 return false;
@@ -182,7 +189,7 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
             return true;
         }
 
-        private bool EditarData(Equipamentos produtoEditado, DateTime novaDataDeFabricacao)
+        private bool EditarData(Equipamento produtoEditado, DateTime novaDataDeFabricacao)
         {
 
             if (novaDataDeFabricacao == null)
@@ -193,7 +200,7 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
             return true;
         }
 
-        private bool EditarNome(Equipamentos produtoEditado, string novoNome)
+        private bool EditarNome(Equipamento produtoEditado, string novoNome)
         {
 
             if (novoNome == null || novoNome == "")
@@ -204,7 +211,7 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
             return true;
         }
 
-        private bool EditarSerial(Equipamentos produtoEditado, string novoNumeroDeSerie)
+        private bool EditarSerial(Equipamento produtoEditado, string novoNumeroDeSerie)
         {
             if (novoNumeroDeSerie == null || novoNumeroDeSerie == "")
                 return false;
@@ -223,20 +230,17 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
 
             int idSelecao = Program.ObterValor<int>("Digite o ID do produto desejado: ");
 
-            Equipamentos produtoDeletado = estoque.FirstOrDefault(idDoProduto => idDoProduto.ID == idSelecao)!; // é a bença isso.
+            Equipamento produtoDeletado = estoque.FirstOrDefault(idDoProduto => idDoProduto.ID == idSelecao)!; // é a bença isso.
 
             if (produtoDeletado != null)
+            {
+                Menu.ModificarCor("Aviso", "Produto não encontrado.\n");
+            }
+            else
             {
                 estoque.Remove(produtoDeletado);
                 Read();
                 Menu.ModificarCor("Erro", "Produto removido com sucesso!\n");
-
-
-            }
-            else
-            {
-                Menu.ModificarCor("Aviso", "Produto não encontrado.\n");
-
             }
         }
 
