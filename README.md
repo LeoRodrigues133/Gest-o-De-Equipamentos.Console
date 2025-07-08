@@ -1,7 +1,7 @@
-# Gestão de Equipamentos
+# GestÃ£o de Equipamentos
 
 <p align="center">
-	<img width="650" src="docs/img/gestao-equipamentos.gif">
+	<img width="650" src="docs/img/Apresentacao.gif">
 </p>
 
 
@@ -12,45 +12,45 @@ Desenvolvido durante o curso Fullstack da [Academia do Programador](https://www.
 ---
 ## Detalhes
 
-Este software foi desenvolvido para auxiliar na gestão de inventários de equipamentos e no controle de manutenções realizadas nesses equipamentos. O objetivo é proporcionar uma maneira fácil e eficiente para que funcionários possam gerenciar informações relevantes sobre equipamentos e chamados de manutenção.
+Este software foi desenvolvido para auxiliar na gestÃ£o de inventÃ¡rios de equipamentos e no controle de manutenÃ§Ãµes realizadas nesses equipamentos. O objetivo Ã© proporcionar uma maneira fÃ¡cil e eficiente para que funcionÃ¡rios possam gerenciar informaÃ§Ãµes relevantes sobre equipamentos e chamados de manutenÃ§Ã£o.
 
 ---
 ## Entrada
 
-O programa deverá ter um menu interativo para que o usuário possa navegar pelas funcionalidades.
+O programa deverÃ¡ ter um menu interativo para que o usuÃ¡rio possa navegar pelas funcionalidades.
 
 ---
 ## Funcionalidades
 
 ### 1. Controle de Equipamentos
 
-- **Registrar Equipamentos:** Permite adicionar novos equipamentos ao sistema com informações como nome, preço de aquisição, número de série, data de fabricação e fabricante.
-- **Visualizar Equipamentos:** Exibe uma lista de todos os equipamentos registrados, mostrando detalhes como número, nome, preço, fabricante e data de fabricação.
-- **Editar Equipamentos:** Oferece a possibilidade de modificar informações de um equipamento existente.
+- **Registrar Equipamentos:** Permite adicionar novos equipamentos ao sistema com informaÃ§Ãµes como nome, preÃ§o de aquisiÃ§Ã£o, nÃºmero de sÃ©rie, data de fabricaÃ§Ã£o e fabricante.
+- **Visualizar Equipamentos:** Exibe uma lista de todos os equipamentos registrados, mostrando detalhes como nÃºmero, nome, preÃ§o, fabricante e data de fabricaÃ§Ã£o.
+- **Editar Equipamentos:** Oferece a possibilidade de modificar informaÃ§Ãµes de um equipamento existente.
 - **Excluir Equipamentos:** Permite remover um equipamento do sistema, atualizando a lista de equipamentos registrados.
 ---
 ## Requisitos
 
-- .NET SDK (recomendado .NET 8.0 ou superior) para compilação e execução do projeto.
+- .NET SDK (recomendado .NET 8.0 ou superior) para compilaÃ§Ã£o e execuÃ§Ã£o do projeto.
 ---
 ## Como Usar
 
-#### Clone o Repositório
+#### Clone o RepositÃ³rio
 ```
 git clone https://github.com/academia-do-programador/gestao-equipamentos-2024.git
 ```
 
-#### Navegue até a pasta raiz da solução
+#### Navegue atÃ© a pasta raiz da soluÃ§Ã£o
 ```
 cd gestao-equipamentos-2024
 ```
 
-#### Restaure as dependências
+#### Restaure as dependÃªncias
 ```
 dotnet restore
 ```
 
-#### Navegue até a pasta do projeto
+#### Navegue atÃ© a pasta do projeto
 ```
 cd GestaoEquipamentos.ConsoleApp
 ```
