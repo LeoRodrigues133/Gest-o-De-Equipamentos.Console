@@ -232,7 +232,7 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloEquipamento
 
             Equipamento produtoDeletado = estoque.FirstOrDefault(idDoProduto => idDoProduto.ID == idSelecao)!; // é a bença isso.
 
-            if (produtoDeletado != null)
+            if (produtoDeletado == null)
             {
                 Menu.ModificarCor("Aviso", "Produto não encontrado.\n");
             }

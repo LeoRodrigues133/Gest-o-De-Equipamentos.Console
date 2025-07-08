@@ -21,7 +21,7 @@ namespace GestaoEquipamentos.ConsoleApp
         #region Métodos da Main
         public static T ObterValor<T>(string texto)
         {
-            Console.WriteLine(texto);
+            Console.Write(texto);
 
             string input = Console.ReadLine();
 

@@ -12,6 +12,8 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloChamado
 
         public void Create()
         {
+            Console.Clear();
+
             Console.WriteLine("Por favor, forneça as informações do chamado: ");
 
             string nome = Program.ObterValor<string>("Titulo do Chamado: ");
@@ -31,6 +33,7 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloChamado
 
         public void Read()
         {
+            Console.Clear();
 
             Menu.Cabecalho("");
             if (VerificarEstoque() == false)
@@ -91,7 +94,7 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloChamado
 
         private void SelecionarCampoDeEdicao(Chamado chamadoEditado)
         {
-            int opcao = Menu.ExibirMenuEdicao("Equipamento");
+            int opcao = Menu.ExibirMenuEdicao("");
 
             switch (opcao)
             {
@@ -128,7 +131,7 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloChamado
 
         private bool EditarNome(Chamado chamadoEditado, string novoNome)
         {
-            if (novoNome == null) 
+            if (novoNome == null)
                 return false;
             chamadoEditado.nome = novoNome;
             return true;
@@ -153,7 +156,7 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloChamado
 
         private bool EditarPreco(Chamado chamadoEditado, double novoPreco)
         {
-            if(novoPreco == null)
+            if (novoPreco == null)
                 return false;
 
             chamadoEditado.valorChamado = novoPreco;
@@ -162,7 +165,13 @@ namespace GestaoEquipamentos.ConsoleApp.ModuloChamado
 
         #endregion
 
-        public void Delete() {
+        public void Delete()
+        {
+
+            Console.Clear();
+
+            Read();
+
 
             int idSelecao = Program.ObterValor<int>("Digite o ID para atualizar o Chamado: ");
 
